@@ -8,23 +8,19 @@ import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import OrderSuccessful from "../pages/OrderSuccessful/OrderSuccessful";
 
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import { Layout } from "../components/Layout/Layout";
 
 const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
-        <Route index element={<Login />} />
-            <Route path="Home" element={<Home />}>
-            </Route>
-            <Route path="Search" element={<Search />}>
-            </Route>
-            <Route path="Detail" element={<Detail />}>
-            </Route>
-            <Route path="ShoppingCart" element={<ShoppingCart />}>
-            </Route>
-            <Route path="OrderSuccessful" element={<OrderSuccessful />}>
-            </Route>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Login />} />
+          <Route path="Home" element={<Home />} />
+          <Route path="Search" element={<Search />} />
+          <Route path="Detail" element={<Detail />} />
+          <Route path="ShoppingCart" element={<ShoppingCart />} />
+          <Route path="OrderSuccessful" element={<OrderSuccessful />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
