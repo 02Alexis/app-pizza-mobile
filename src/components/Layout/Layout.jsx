@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Layout.scss";
 import { getAministrador } from "../../services/getAdministrador";
+import { Outlet } from "react-router-dom";
 
 export const Layout = () => {
   const [administrador, setAdministrador] = useState({});
@@ -17,16 +18,19 @@ export const Layout = () => {
   }, [administrador.length]);
 
   return (
-    <div className="layout">
-      <div className="info">
-        <h1 className="info__title">Home</h1>
-        <p className="info__greeting">
-          ¡Qué bueno verte {administrador.userName}!
-        </p>
+    <>
+      <div className="layout">
+        <div className="info">
+          <h1 className="info__title">Home</h1>
+          <p className="info__greeting">
+            ¡Qué bueno verte {administrador.userName}!
+          </p>
+        </div>
+        <figure className="layout__imagePerfil">
+          <img src={administrador.perfil} alt="Foto de perfil" />
+        </figure>
       </div>
-      <figure className="layout__imagePerfil">
-        <img src={administrador.perfil} alt="Foto de perfil" />
-      </figure>
-    </div>
+      <Outlet />
+    </>
   );
 };
