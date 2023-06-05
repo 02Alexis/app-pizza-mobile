@@ -8,6 +8,7 @@ import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import OrderSuccessful from "../pages/OrderSuccessful/OrderSuccessful";
 
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import { Layout } from "../components/Layout/Layout";
 
 export const searchParamsContext = createContext({});
 
