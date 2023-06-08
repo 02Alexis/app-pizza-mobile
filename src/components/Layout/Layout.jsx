@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Layout.scss";
-import { getAministrador } from "../../services/getAdministrador";
+import {getAministrador} from "../../Services/getAdministrador" 
 import { Outlet } from "react-router-dom";
 
 export const Layout = () => {
