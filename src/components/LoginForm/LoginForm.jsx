@@ -95,9 +95,7 @@ const LoginForm = () => {
               <div className="form__line"></div>
             </div>
 
-            <button type="submit" className="form__submit">
-              Iniciar sesión
-            </button>
+            <button type="submit" className="form__submit">Iniciar sesión</button>
             <div className="form__reset-password">
               <button>Restablecer contarseña</button>
               <p>¿No tienes una cuenta?</p>
