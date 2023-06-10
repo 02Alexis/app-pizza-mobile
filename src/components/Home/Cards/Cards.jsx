@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
 import { getPizzas } from "../../../Services/pizzasService";
 import './Cards.scss';
+import { Link } from 'react-router-dom';
+
 
 const Cards = () => {
   const [pizzas, setPizzas] = useState([]);
@@ -12,18 +13,26 @@ const Cards = () => {
     });
   }, []);
 
+  const handlePizzaClick = (pizzaId) => {
+    sessionStorage.setItem('SelectedPizza', pizzaId);
+  };
+
   return (
     <div className="cards-container">
       <h1>Pizzas</h1>
       <div className="cards">
         {pizzas.map((pizza) => (
-          <Card key={pizza.id} className="pizza-card">
-            <Card.Img variant="top" src={pizza.img} />
-            <Card.Body>
-              <Card.Title>{pizza.name}</Card.Title>
-              <button className="card-price custom-button">{pizza.price}</button>
-            </Card.Body>
-          </Card>
+          <Link key={pizza.id} to={`/Detail`} onClick={() => handlePizzaClick(pizza.id)}>
+          <div
+              className="pizza-card"
+              style={{ backgroundImage: `url(${pizza.img})` }}
+            >
+              <div className="card-body">
+                <h2 className="card-title">{pizza.name}</h2>
+                <span className="card-price">{pizza.price}</span>
+              </div>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
