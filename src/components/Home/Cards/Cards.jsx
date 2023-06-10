@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { getPizzas } from "../../../Services/pizzasService";
 import './Cards.scss';
 
@@ -21,9 +21,7 @@ const Cards = () => {
             <Card.Img variant="top" src={pizza.img} />
             <Card.Body>
               <Card.Title>{pizza.name}</Card.Title>
-              <div className="price-button-container">
-                <Button variant="primary">{pizza.price}</Button>
-              </div>
+              <button className="card-price custom-button">{pizza.price}</button>
             </Card.Body>
           </Card>
         ))}
