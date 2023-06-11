@@ -5,11 +5,10 @@ import HomeMain from "../../components/Home/HomeMain"; // Modificación en esta 
 const Home = () => {
   return (
     <>
-      <Layout></Layout>
-      <HomeMain></HomeMain>
+      <Layout />
+      <HomeMain />
     </>
   );
 };
 
 export default Home;
-

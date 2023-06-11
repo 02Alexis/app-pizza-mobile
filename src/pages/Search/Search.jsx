@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Search.scss";
-import { FormularioSearch } from "../../components/FormularioSearch/FormularioSearch";
+import { FormularioSearch } from "../../components/FormSearch/FormSearch";
 import iconPizza from "../../assets/icon/icon-pizza-line.svg";
 import FooterSearch from "../../components/FooterSearch/FooterSearch";
 import { getPizzas } from "../../Services/getPizzas";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import { Layout } from "../../components/Layout/Layout";
 
 function Search() {
   const [pizzas, setPizzas] = useState([]);
@@ -13,7 +14,16 @@ function Search() {
   const [filteredPizzas, setFilteredPizzas] = useState([]);
 
   const handleNewPizza = (pizza) => {
-    setSearchParams({ pizza: pizza.pizzaName });
+    if (pizza.pizzaName) {
+      setSearchParams({ pizza: pizza.pizzaName });
+    } else {
+      setSearchParams({});
+      console.log("No hay pizza");
+    }
+  };
+
+  const handlePizzaClick = (pizzaId) => {
+    sessionStorage.setItem("SelectedPizza", pizzaId);
   };
 
   useEffect(() => {
@@ -30,6 +40,8 @@ function Search() {
         pizza.name.toLowerCase().includes(searchParams.get("pizza"))
       );
       setFilteredPizzas(filteredPizzas);
+    } else {
+      setFilteredPizzas([]);
     }
 
     if (!searchParams?.get("pizza")) {
@@ -39,27 +51,46 @@ function Search() {
 
   return (
     <div className="searchPage">
+      <Layout />
       <FormularioSearch
         pizzaName={initialSearch}
         handlePizza={handleNewPizza}
       />
-      <section className="containerPizza">
-        <figure className="containerPizza__figure">
-          <img src={iconPizza} alt="Ícono de pizza" />
-        </figure>
-        {filteredPizzas.length ? (
-          <ul className="containerPizza__list">
+      {filteredPizzas.length ? (
+        <div className="search-cards-container">
+          <h1>
+            {filteredPizzas.length === 1
+              ? "1 Resultado"
+              : `${filteredPizzas.length} Resultados`}
+          </h1>
+          <div className="search-cards">
             {filteredPizzas.map((pizza) => (
-              <li key={pizza.id} className="containerPizza__list__item">
-                <h3>{pizza.name}</h3>
-                <p>{pizza.description}</p>
-              </li>
+              <Link
+                key={pizza.id}
+                to={`/Detail`}
+                onClick={() => handlePizzaClick(pizza.id)}
+              >
+                <div
+                  className="search-pizza-card"
+                  style={{ backgroundImage: `url(${pizza.img})` }}
+                >
+                  <div className="search-card-body">
+                    <h2 className="search-card-title">{pizza.name}</h2>
+                    <span className="search-card-price">{pizza.price}</span>
+                  </div>
+                </div>
+              </Link>
             ))}
-          </ul>
-        ) : (
+          </div>
+        </div>
+      ) : (
+        <section className="containerPizza">
+          <figure className="containerPizza__figure">
+            <img src={iconPizza} alt="Ícono de pizza" />
+          </figure>
           <p>Busca la pizza que más te gusta.</p>
-        )}
-      </section>
+        </section>
+      )}
       <FooterSearch />
     </div>
   );
