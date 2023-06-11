@@ -3,7 +3,7 @@ import React from "react";
 const OrderSuccessful = () => {
   return (
     <>
-  <h1>ordene su pizza</h1>
+  <h1>Pago exitoso si ve que si habia plata</h1>
     </>
   );
 };
