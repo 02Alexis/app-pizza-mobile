@@ -9,7 +9,7 @@ import { searchParamsContext } from "../../Routes/AppRoutes";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const { isLoggedIn, setIsLoggedIn, username, setUsername } =
+  const { setIsLoggedIn, setUsername, setUser } =
     useContext(searchParamsContext);
 
   const handleSubmit = async (values) => {
@@ -18,9 +18,11 @@ const LoginForm = () => {
       const data = await GetAdmin(userName, paswoord);
       if (data.length > 0) {
         setIsLoggedIn(true);
-        setUsername(username);
-        navigate(`/Home/${userName}`);
+        setUsername(userName);
+        setUser(data[0]);
+        sessionStorage.setItem("user", JSON.stringify(data[0]));
         console.log("Ingreso exitoso");
+        navigate(`/Home/${userName}`);
       } else {
         console.log("Credenciales inválidas");
       }
@@ -95,12 +97,14 @@ const LoginForm = () => {
               <div className="form__line"></div>
             </div>
 
-            <button type="submit" className="form__submit">Iniciar sesión</button>
+            <button type="submit" className="form__submit">
+              Iniciar sesión
+            </button>
             <div className="form__reset-password">
               <button>Restablecer contarseña</button>
               <p>¿No tienes una cuenta?</p>
             </div>
-              <p class="form__link">Registrate aquí</p>
+            <p className="form__link">Registrate aquí</p>
           </div>
         </Form>
       )}
