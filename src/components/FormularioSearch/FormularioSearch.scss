@@ -15,7 +15,7 @@
 .containerInput {
   display: flex;
   flex-direction: row;
-  width: 70%;
+  width: 80%;
   justify-content: flex-end;
   &__searchPizza {
     width: 100%;
@@ -32,5 +32,6 @@
   color: lightcoral !important;
   &:hover {
     cursor: pointer;
+    transform: scale(1.1);
   }
 }

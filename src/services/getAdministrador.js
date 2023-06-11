@@ -13,3 +13,5 @@ export const getAministrador = async (idAdministrador) => {
     return {};
   }
 };
+
+
