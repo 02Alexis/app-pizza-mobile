@@ -1,12 +1,17 @@
-import React from "react";
+import Cart from '../../components/Cart/Cart';
+import { Layout } from '../../components/Layout/Layout';
+import  Payform  from '../../components/Payform/Payform'
 
 const ShoppingCart = () => {
   return (
-    <>
-    <h1>2 pizzas hawaianas</h1>
-    </>
+    <div>
+      <Layout />
+      <h1>Carrito</h1>
+      <Cart />
+      <Payform/>
+      
+    </div>
   );
 };
-//pedido exitoso
-export default ShoppingCart;
 
+export default ShoppingCart;
