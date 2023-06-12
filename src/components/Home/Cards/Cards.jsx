@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { getPizzas } from "../../../Services/pizzasService";
-import './Cards.scss';
-import { Link } from 'react-router-dom';
-
+import "./Cards.scss";
+import { Link } from "react-router-dom";
 
 const Cards = () => {
   const [pizzas, setPizzas] = useState([]);
@@ -14,7 +13,7 @@ const Cards = () => {
   }, []);
 
   const handlePizzaClick = (pizzaId) => {
-    sessionStorage.setItem('SelectedPizza', pizzaId);
+    sessionStorage.setItem("SelectedPizza", pizzaId);
   };
 
   return (
@@ -22,8 +21,12 @@ const Cards = () => {
       <h1>Pizzas</h1>
       <div className="cards">
         {pizzas.map((pizza) => (
-          <Link key={pizza.id} to={`/Detail`} onClick={() => handlePizzaClick(pizza.id)}>
-          <div
+          <Link
+            key={pizza.id}
+            to={`/Detail/${pizza.id}`}
+            onClick={() => handlePizzaClick(pizza.id)}
+          >
+            <div
               className="pizza-card"
               style={{ backgroundImage: `url(${pizza.img})` }}
             >

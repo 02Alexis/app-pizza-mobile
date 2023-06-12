@@ -6,6 +6,7 @@ import "./Login.scss";
 import Pizza from "../../assets/icon/pizza.svg";
 import { GetAdmin } from "../../Services/GetAdmind";
 import { searchParamsContext } from "../../Routes/AppRoutes";
+import Swal from "sweetalert2";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -21,10 +22,10 @@ const LoginForm = () => {
         setUsername(userName);
         setUser(data[0]);
         sessionStorage.setItem("user", JSON.stringify(data[0]));
-        console.log("Ingreso exitoso");
+        Swal.fire("Good job!", "Has iniciado sesión correctamente!", "success");
         navigate(`/Home/${userName}`);
       } else {
-        console.log("Credenciales inválidas");
+        Swal.fire("Oopss!", "Credenciales incorrectas.", "error");
       }
     } catch (error) {
       console.log(error);

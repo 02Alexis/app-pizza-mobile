@@ -16,6 +16,7 @@ const AppRoutes = () => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState({});
   const [filters, setFilters] = useState({});
+  const [idSelectedPizza, setIdSelectedPizza] = useState(0);
 
   return (
     <BrowserRouter>
@@ -29,6 +30,8 @@ const AppRoutes = () => {
           setFilters,
           user,
           setUser,
+          idSelectedPizza,
+          setIdSelectedPizza,
         }}
       >
         <Routes>
@@ -36,7 +39,7 @@ const AppRoutes = () => {
             <Route index element={<Login />} />
             <Route path="Home/:userName" element={<Home />} />
             <Route path="Search" element={<Search />} />
-            <Route path="Detail" element={<Detail />} />
+            <Route path="Detail/:pizzaId" element={<Detail />} />
             <Route path="ShoppingCart" element={<ShoppingCart />} />
             <Route path="OrderSuccessful" element={<OrderSuccessful />} />
           </Route>
