@@ -6,6 +6,7 @@ import "./login.scss";
 import Pizza from "../../assets/icon/pizza.svg";
 import { GetAdmin } from "../../Services/GetAdmind";
 import { searchParamsContext } from "../../Routes/AppRoutes";
+import Swal from "sweetalert2";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -22,9 +23,16 @@ const LoginForm = () => {
         setUser(data[0]);
         sessionStorage.setItem("user", JSON.stringify(data[0]));
         console.log("Ingreso exitoso");
+        Swal.fire({position: 'top-end',
+        icon: 'success',
+        title: 'Genial, datos Confirmados',
+        showConfirmButton: false,
+        timer: 1500
+      });
         navigate(`/Home/${userName}`);
       } else {
         console.log("Credenciales inválidas");
+        Swal.fire("Oopss!", "No has completado todos los datos", "error");
       }
     } catch (error) {
       console.log(error);
