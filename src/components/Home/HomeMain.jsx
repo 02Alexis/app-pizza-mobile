@@ -13,7 +13,7 @@ const HomeMain = () => {
     <div>
       <Cards />
       <Link to="/ShoppingCart">
-        <button>Ir al carrito</button>
+        <button>Ir al carrito.</button>
       </Link>
       <button onClick={handleSearchPage}>Buscar</button>
     </div>
