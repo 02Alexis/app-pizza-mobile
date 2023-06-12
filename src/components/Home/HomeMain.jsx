@@ -1,21 +1,27 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import Cupons from "./Cupons/Cupons"
 import Cards from "./Cards/Cards";
+import FooterSearch from "../FooterSearch/FooterSearch";
+import "./HomeMain.scss"
 
 const HomeMain = () => {
-  const navigate = useNavigate();
-
-  const handleSearchPage = () => {
-    navigate("/Search");
-  };
 
   return (
-    <div>
-      <Cards />
-      <Link to="/ShoppingCart">
-        <button>Ir al carrito.</button>
-      </Link>
-      <button onClick={handleSearchPage}>Buscar</button>
+
+    <div className="all">
+      
+      <div className="cupons">
+        <Cupons/>
+      </div>
+
+      <div className="main">
+        <Cards />
+      </div>
+
+      <div className="footer">
+        <FooterSearch/>
+      </div>
+      
     </div>
   );
 };
