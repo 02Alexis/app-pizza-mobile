@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import "./Login.scss";
+import "./login.scss";
 import Pizza from "../../assets/icon/pizza.svg";
 import { GetAdmin } from "../../Services/GetAdmind";
 import { searchParamsContext } from "../../Routes/AppRoutes";
