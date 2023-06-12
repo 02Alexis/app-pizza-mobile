@@ -1,0 +1,52 @@
+.cupons-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  
+  .cupon {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 200px;
+    white-space: nowrap;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cupon:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #f5f5f5;
+  }
+  
+  .cupon:after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid white;
+  }
+  
+  .cupon-name {
+    font-weight: bold;
+  }
+  
+  .cupon-discount {
+    margin-top: 5px;
+  }
+  

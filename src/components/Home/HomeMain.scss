@@ -1,0 +1,20 @@
+.all {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 233, 233);
+  }
+  
+  .main {
+    flex: 1;
+  }
+  
+  .footer {
+    padding-left: 0px;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    z-index: 4;
+  }
+  
+  
