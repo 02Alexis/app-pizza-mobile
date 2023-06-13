@@ -4,6 +4,7 @@ import  Payform  from '../../components/Payform/Payform'
 import FooterSearch from '../../components/FooterSearch/FooterSearch';
 
 const ShoppingCart = () => {
+  
   return (
     <div>
       <Layout />
