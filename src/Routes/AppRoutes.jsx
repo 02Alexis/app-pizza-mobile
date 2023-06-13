@@ -38,7 +38,7 @@ const AppRoutes = () => {
         }}
       >
         <Routes>
-          <Route path="/">
+          <Route path={"/app-pizza-mobile"}>
             <Route index element={<Login />} />
             <Route path="Home/:userName" element={<Home />} />
             <Route path="Search" element={<Search />} />
