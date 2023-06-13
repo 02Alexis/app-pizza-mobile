@@ -25,14 +25,14 @@ const LoginForm = () => {
         console.log("Ingreso exitoso");
         Swal.fire({position: 'top-end',
         icon: 'success',
-        title: 'Genial, datos Confirmados',
+        title: 'Genial, datos Confirmados.',
         showConfirmButton: false,
         timer: 1500
       });
         navigate(`/Home/${userName}`);
       } else {
         console.log("Credenciales inválidas");
-        Swal.fire("Oopss!", "No has completado todos los datos", "error");
+        Swal.fire("Oopss!", "No has completado todos los datos.", "error");
       }
     } catch (error) {
       console.log(error);

@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import { getPizzas } from "../../../Services/pizzasService";
-import './Cards.scss';
-import { Link } from 'react-router-dom';
-
+import "./Cards.scss";
+import { Link } from "react-router-dom";
+import { searchParamsContext } from "../../../Routes/AppRoutes";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Cards = () => {
+  const { setIdSelectedPizza } = useContext(searchParamsContext);
   const [pizzas, setPizzas] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getPizzas().then((data) => {
@@ -14,7 +18,15 @@ const Cards = () => {
   }, []);
 
   const handlePizzaClick = (pizzaId) => {
-    sessionStorage.setItem('SelectedPizza', pizzaId);
+    setIdSelectedPizza(pizzaId);
+    sessionStorage.setItem("pizzaId", JSON.stringify(pizzaId));
+    Swal.fire(
+      "Good job!",
+      "Vamos a ver el detalle de la pizza que escogiste.!",
+      "success"
+    ).then(() => {
+      navigate(`/Detail/${pizzaId}`);
+    });
   };
 
   return (
@@ -22,8 +34,12 @@ const Cards = () => {
       <h1>Pizzas</h1>
       <div className="cards">
         {pizzas.map((pizza) => (
-          <Link key={pizza.id} to={`/Detail`} onClick={() => handlePizzaClick(pizza.id)}>
-          <div
+          <Link
+            key={pizza.id}
+            /*             to={`/Detail/${pizza.id}`} */
+            onClick={() => handlePizzaClick(pizza.id)}
+          >
+            <div
               className="pizza-card"
               style={{ backgroundImage: `url(${pizza.img})` }}
             >

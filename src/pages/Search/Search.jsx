@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Search.scss";
 import { FormularioSearch } from "../../components/FormSearch/FormSearch";
 import iconPizza from "../../assets/icon/icon-pizza-line.svg";
@@ -6,12 +6,18 @@ import FooterSearch from "../../components/FooterSearch/FooterSearch";
 import { getPizzas } from "../../Services/getPizzas";
 import { Link, useSearchParams } from "react-router-dom";
 import { Layout } from "../../components/Layout/Layout";
+import { searchParamsContext } from "../../Routes/AppRoutes";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Search() {
   const [pizzas, setPizzas] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [initialSearch, setInitialSearch] = useState("");
   const [filteredPizzas, setFilteredPizzas] = useState([]);
+
+  const { setIdSelectedPizza } = useContext(searchParamsContext);
+  const navigate = useNavigate();
 
   const handleNewPizza = (pizza) => {
     if (pizza.pizzaName) {
@@ -23,7 +29,15 @@ function Search() {
   };
 
   const handlePizzaClick = (pizzaId) => {
-    sessionStorage.setItem("SelectedPizza", pizzaId);
+    setIdSelectedPizza(pizzaId);
+    sessionStorage.setItem("pizzaId", JSON.stringify(pizzaId));
+    Swal.fire(
+      "Good job!",
+      "Vamos a ver el detalle de la pizza que escogiste.!",
+      "success"
+    ).then(() => {
+      navigate(`/Detail/${pizzaId}`);
+    });
   };
 
   useEffect(() => {
@@ -67,7 +81,7 @@ function Search() {
             {filteredPizzas.map((pizza) => (
               <Link
                 key={pizza.id}
-                to={`/Detail`}
+                /* to={`/Detail/${pizza.id}`} */
                 onClick={() => handlePizzaClick(pizza.id)}
               >
                 <div

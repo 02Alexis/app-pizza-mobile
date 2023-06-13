@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getShoppingcart } from '../../Services/shippingcartService';
+import { getShoppingcart } from '../../Services/shoppingcartService';
 import './Cart.scss';
 
 const Cart = () => {

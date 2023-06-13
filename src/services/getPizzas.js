@@ -10,3 +10,12 @@ export const getPizzas = async () => {
       console.error("Error: pizzas", error);
     });
 };
+
+export const getPizzaById = async (id) => {
+  return axios
+    .get(`${baseURL}/pizzas/${id}`)
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error("Error: pizzas", error);
+    });
+}
