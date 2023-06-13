@@ -6,10 +6,11 @@ import "./Login.scss";
 import Pizza from "../../assets/icon/pizza.svg";
 import { GetAdmin } from "../../Services/GetAdmind";
 import { searchParamsContext } from "../../Routes/AppRoutes";
+import Swal from "sweetalert2";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const { isLoggedIn, setIsLoggedIn, username, setUsername } =
+  const { setIsLoggedIn, setUsername, setUser } =
     useContext(searchParamsContext);
 
   const handleSubmit = async (values) => {
@@ -18,11 +19,26 @@ const LoginForm = () => {
       const data = await GetAdmin(userName, paswoord);
       if (data.length > 0) {
         setIsLoggedIn(true);
-        setUsername(username);
-        navigate(`/Home/${userName}`);
+        setUsername(userName);
+        setUser(data[0]);
+        sessionStorage.setItem("user", JSON.stringify(data[0]));
         console.log("Ingreso exitoso");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Genial, datos confirmados!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          navigate(`/Home/${userName}`);
+        });
       } else {
         console.log("Credenciales inválidas");
+        Swal.fire(
+          "Oopss!",
+          "No has completado todos los datos o los datos son incorrectos!",
+          "error"
+        );
       }
     } catch (error) {
       console.log(error);
@@ -95,12 +111,14 @@ const LoginForm = () => {
               <div className="form__line"></div>
             </div>
 
-            <button type="submit" className="form__submit">Iniciar sesión</button>
+            <button type="submit" className="form__submit">
+              Iniciar sesión
+            </button>
             <div className="form__reset-password">
               <button>Restablecer contarseña</button>
               <p>¿No tienes una cuenta?</p>
             </div>
-              <p class="form__link">Registrate aquí</p>
+            <p className="form__link">Registrate aquí</p>
           </div>
         </Form>
       )}

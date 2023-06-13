@@ -8,14 +8,16 @@ import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import OrderSuccessful from "../pages/OrderSuccessful/OrderSuccessful";
 
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import { Layout } from "../components/Layout/Layout";
 
 export const searchParamsContext = createContext({});
 
 const AppRoutes = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
+  const [user, setUser] = useState({});
   const [filters, setFilters] = useState({});
+  const [idSelectedPizza, setIdSelectedPizza] = useState(0);
+  const [pizzaSelectedDetail, setPizzaSelectedDetail] = useState({});
 
   return (
     <BrowserRouter>
@@ -26,17 +28,23 @@ const AppRoutes = () => {
           username,
           setUsername,
           filters,
-          setFilters
+          setFilters,
+          user,
+          setUser,
+          idSelectedPizza,
+          setIdSelectedPizza,
+          pizzaSelectedDetail,
+          setPizzaSelectedDetail,
         }}
       >
         <Routes>
           <Route path="/">
             <Route index element={<Login />} />
-            <Route path="Home/:userName" element={<Home />}></Route>
-            <Route path="Search" element={<Search />}></Route>
-            <Route path="Detail" element={<Detail />}></Route>
-            <Route path="ShoppingCart" element={<ShoppingCart />}></Route>
-            <Route path="OrderSuccessful" element={<OrderSuccessful />}></Route>
+            <Route path="Home/:userName" element={<Home />} />
+            <Route path="Search" element={<Search />} />
+            <Route path="Detail/:pizzaId" element={<Detail />} />
+            <Route path="ShoppingCart" element={<ShoppingCart />} />
+            <Route path="OrderSuccessful" element={<OrderSuccessful />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
