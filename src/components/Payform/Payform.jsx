@@ -6,6 +6,10 @@ const Payform = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
+    nameBuyer: '',
+    nameCity: '',
+    nameAddress: '',
+
     cardNumber: '',
     cardHolder: '',
     expirationDate: '',
@@ -22,6 +26,10 @@ const Payform = () => {
 
     // Validar si los campos del formulario están vacíos
     if (
+      formData.nameBuyer === '' ||
+      formData.nameCity === '' ||
+      formData.nameAddress === '' ||
+
       formData.cardNumber === '' ||
       formData.cardHolder === '' ||
       formData.expirationDate === '' ||
@@ -44,10 +52,48 @@ const Payform = () => {
     <div className="payform-container">
       <h2>Formulario de Pago</h2>
       <form onSubmit={handleSubmit}>
+      <div className="form-group">
+          <label htmlFor="nameBuyer">Nombre cliente:</label>
+          <input
+            type="text"
+            id="nameBuyer"
+            name="nameBuyer"
+            value={formData.nameBuyer}
+            onChange={handleChange}
+            placeholder="Ingrese el nombre de quien recibe"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="cardNumber">Ciudad</label>
+          <input
+            type="text"
+            id="nameCity"
+            name="nameCity"
+            value={formData.nameCity}
+            onChange={handleChange}
+            placeholder="Ingrese el nombre de la ciudad"
+            required
+          />
+        </div>
+                <div className="form-group">
+          <label htmlFor="cardNumber">Direccion:</label>
+          <input
+            type="text"
+            id="nameAddress"
+            name="nameAddress"
+            value={formData.nameAddress}
+            onChange={handleChange}
+            placeholder="Ingrese direccion"
+            required
+          />
+        </div>
+
+
         <div className="form-group">
           <label htmlFor="cardNumber">Número de Tarjeta:</label>
           <input
-            type="text"
+            type="number"
             id="cardNumber"
             name="cardNumber"
             value={formData.cardNumber}
@@ -71,7 +117,7 @@ const Payform = () => {
         <div className="form-group">
           <label htmlFor="expirationDate">Fecha de Vencimiento:</label>
           <input
-            type="text"
+            type="date"
             id="expirationDate"
             name="expirationDate"
             value={formData.expirationDate}
@@ -83,7 +129,7 @@ const Payform = () => {
         <div className="form-group">
           <label htmlFor="cvv">CVV:</label>
           <input
-            type="text"
+            type="number"
             id="cvv"
             name="cvv"
             value={formData.cvv}
