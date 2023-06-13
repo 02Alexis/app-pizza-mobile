@@ -3,7 +3,7 @@ import "./Search.scss";
 import { FormularioSearch } from "../../components/FormSearch/FormSearch";
 import iconPizza from "../../assets/icon/icon-pizza-line.svg";
 import FooterSearch from "../../components/FooterSearch/FooterSearch";
-import { getPizzas } from "../../Services/getPizzas";
+import { getPizzas } from "../../Services/pizzasService"; 
 import { Link, useSearchParams } from "react-router-dom";
 import { Layout } from "../../components/Layout/Layout";
 import { searchParamsContext } from "../../Routes/AppRoutes";
