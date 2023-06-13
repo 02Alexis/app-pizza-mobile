@@ -6,7 +6,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const baseURL = "http://localhost:4000";
+const baseURL = "https://minibackend-app-pizza-production.up.railway.app";
 
 const FooterDetail = () => {
   const { pizzaSelectedDetail } = useContext(searchParamsContext);

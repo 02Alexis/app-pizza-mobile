@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_FAKE = 'http://localhost:4000/administrators';
+const API_FAKE =
+  "https://minibackend-app-pizza-production.up.railway.app/administrators";
 
 export const GetAdmin = async (userName, paswoord) => {
     try {

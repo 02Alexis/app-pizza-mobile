@@ -33,7 +33,7 @@ function Search() {
     sessionStorage.setItem("pizzaId", JSON.stringify(pizzaId));
     Swal.fire(
       "Good job!",
-      "Vamos a ver el detalle de la pizza que escogiste.!",
+      "Vamos a ver el detalle de la pizza que escogiste!",
       "success"
     ).then(() => {
       navigate(`/Detail/${pizzaId}`);

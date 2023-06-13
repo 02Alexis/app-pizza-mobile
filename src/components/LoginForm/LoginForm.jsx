@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import "./login.scss";
+import "./Login.scss";
 import Pizza from "../../assets/icon/pizza.svg";
 import { GetAdmin } from "../../Services/GetAdmind";
 import { searchParamsContext } from "../../Routes/AppRoutes";
@@ -23,16 +23,22 @@ const LoginForm = () => {
         setUser(data[0]);
         sessionStorage.setItem("user", JSON.stringify(data[0]));
         console.log("Ingreso exitoso");
-        Swal.fire({position: 'top-end',
-        icon: 'success',
-        title: 'Genial, datos Confirmados.',
-        showConfirmButton: false,
-        timer: 1500
-      });
-        navigate(`/Home/${userName}`);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Genial, datos confirmados!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          navigate(`/Home/${userName}`);
+        });
       } else {
         console.log("Credenciales inválidas");
-        Swal.fire("Oopss!", "No has completado todos los datos.", "error");
+        Swal.fire(
+          "Oopss!",
+          "No has completado todos los datos o los datos son incorrectos!",
+          "error"
+        );
       }
     } catch (error) {
       console.log(error);
