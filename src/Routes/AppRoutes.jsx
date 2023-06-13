@@ -17,6 +17,7 @@ const AppRoutes = () => {
   const [user, setUser] = useState({});
   const [filters, setFilters] = useState({});
   const [idSelectedPizza, setIdSelectedPizza] = useState(0);
+  const [pizzaSelectedDetail, setPizzaSelectedDetail] = useState({});
 
   return (
     <BrowserRouter>
@@ -32,6 +33,8 @@ const AppRoutes = () => {
           setUser,
           idSelectedPizza,
           setIdSelectedPizza,
+          pizzaSelectedDetail,
+          setPizzaSelectedDetail,
         }}
       >
         <Routes>

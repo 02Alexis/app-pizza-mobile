@@ -1,12 +1,29 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { searchParamsContext } from "../../Routes/AppRoutes";
 import { getPizzaById } from "../../Services/pizzasService";
 import FooterDetail from "../../components/FooterDetail/FooterDetail";
 import "./Detail.scss";
+import { useNavigate } from "react-router-dom";
 
 const Detail = () => {
-  const { idSelectedPizza } = useContext(searchParamsContext);
-  const [pizzaSelectedDetail, setPizzaSelectedDetail] = useState({});
+  const { idSelectedPizza, pizzaSelectedDetail, setPizzaSelectedDetail, user } =
+    useContext(searchParamsContext);
+
+  let userSearch = {};
+  if (user && Object.keys(user).length > 0) {
+    userSearch = user;
+  } else {
+    const storedUser = sessionStorage.getItem("user");
+    if (storedUser) {
+      userSearch = JSON.parse(storedUser);
+    }
+  }
+
+  const navigate = useNavigate();
+
+  const handleHome = () => {
+    navigate(`/Home/${userSearch.userName}`);
+  };
 
   let pizzaIdSelected = 0;
 
@@ -26,37 +43,51 @@ const Detail = () => {
         setPizzaSelectedDetail(pizzaSelected);
       }
     };
-    fetchPizza();
-  }, [pizzaIdSelected, pizzaSelectedDetail]);
+
+    if (pizzaIdSelected !== pizzaSelectedDetail.id) {
+      fetchPizza();
+    }
+  }, [pizzaIdSelected, pizzaSelectedDetail, setPizzaSelectedDetail]);
 
   return (
-    <>
-      <figure>
+    <div className="detailPage">
+      <figure className="figurePizza">
         <img src={pizzaSelectedDetail.img} alt={pizzaSelectedDetail.name} />
-        <div>
-          <span className="material-symbols-outlined arrow">
+        <div className="containerAllPizzas">
+          <span
+            className="material-symbols-outlined containerAllPizzas__arrow"
+            onClick={handleHome}
+          >
             arrow_back_ios
           </span>
-          <p>Todas las pizzas</p>
+          <p className="containerAllPizzas__title" onClick={handleHome}>
+            Todas las pizzas
+          </p>
         </div>
       </figure>
-      <section>
-        <h1>{pizzaSelectedDetail.name}</h1>
-        <div>
-          <span className="card-price">{pizzaSelectedDetail.price}</span>
-          <span>★ {pizzaSelectedDetail.previews}</span>
+      <section className="detailsPizza">
+        <h1 className="detailsPizza__name">{pizzaSelectedDetail.name}</h1>
+        <div className="containerPriceAndReviews">
+          <span className="containerPriceAndReviews__price">
+            {`$ ${pizzaSelectedDetail.price}`}
+          </span>
+          <span className="containerPriceAndReviews__reviews">{`★ ${pizzaSelectedDetail.previews} Reviews`}</span>
         </div>
-        <h4>Descripción</h4>
-        <p>{pizzaSelectedDetail.description}</p>
+        <h4 className="detailsPizza__description">Descripción</h4>
+        <p className="detailsPizza__description--text">
+          {pizzaSelectedDetail.description}
+        </p>
         {pizzaSelectedDetail?.recomendation?.length ? (
           pizzaSelectedDetail.recomendation.map((recomendation) => (
-            <div key={recomendation.id}>
-              <figure>
+            <div key={recomendation.id} className="containerRecomendations">
+              <figure className="containerRecomendations__figure">
                 <img src={recomendation.imgU} alt="" />
               </figure>
-              <div>
-                <div>
-                  <h6>{recomendation.nameU}</h6>
+              <div className="containerRecomendations__info">
+                <div className="recomendationsInfo">
+                  <h6 className="recomendationsInfo__userName">
+                    {recomendation.nameU}
+                  </h6>
                   <p>4d ago</p>
                 </div>
                 <span>★ ★ ★ ★</span>
@@ -68,8 +99,8 @@ const Detail = () => {
           <p>No hay recomendaciones</p>
         )}
       </section>
-      <FooterDetail />
-    </>
+      <FooterDetail className="footer" />
+    </div>
   );
 };
 
