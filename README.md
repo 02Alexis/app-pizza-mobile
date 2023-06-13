@@ -12,6 +12,19 @@ https://minibackend-app-pizza-production.up.railway.app
 
 # Despliegue
 
+https://app-pizza-mobile.vercel.app/
+
+## Usuarios para prueba:
+
+username: Andres
+password: 12345
+
+username: Alexis
+password: kirito
+
+username: Diego
+password: zoro
+
 
 # Getting Started with Create React App
 
