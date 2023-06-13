@@ -1,10 +1,16 @@
 # MiniBackEnd
 
-https://minibackend-app-pizza-production.up.railway.app/shoppingcart
+https://minibackend-app-pizza-production.up.railway.app
+
+## EndPoints:
+
+- pizzas
+- administrators
+- cupons
+- compra
+- shoppingcart
 
 # Despliegue
-
-
 
 
 # Getting Started with Create React App
