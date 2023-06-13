@@ -1,10 +1,9 @@
 import React from "react";
+import OrderAlert from "../../components/OrderSuccess/OrderAlert"
 
 const OrderSuccessful = () => {
   return (
-    <>
-  <h1>ordene su pizza</h1>
-    </>
+  <OrderAlert/>
   );
 };
 
