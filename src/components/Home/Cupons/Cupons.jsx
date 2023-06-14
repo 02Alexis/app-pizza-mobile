@@ -50,9 +50,8 @@ const Cupons = () => {
 
     const startCarousel = () => {
       if (!isMouseOver) {
-        currentPosition += 1; // Ajusta la velocidad del carrusel cambiando este valor
+        currentPosition += 1; // Ajusta la velocidad
 
-        // Comprueba si se alcanza el final del carrusel
         if (currentPosition >= carouselRef.current.scrollWidth / 2) {
           currentPosition = 0; // Vuelve al inicio del carrusel
         }
