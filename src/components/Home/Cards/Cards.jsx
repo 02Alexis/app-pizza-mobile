@@ -31,7 +31,6 @@ const Cards = () => {
 
   return (
     <div className="cards-container">
-      <h1>Pizzas</h1>
       <div className="cards">
         {pizzas.map((pizza) => (
           <Link

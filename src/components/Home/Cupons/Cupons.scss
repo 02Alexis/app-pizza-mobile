@@ -1,9 +1,20 @@
-.cupons-container {
+.Top-part{
   display: flex;
-  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.cupons-carousel {
   overflow-x: auto;
-  justify-content: flex-start;
-  gap: 10px;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.cupons-container {
+  display: inline-block;
+
 }
 
 .cupon {
@@ -12,26 +23,28 @@
   padding: 10px;
   border-radius: 10px;
   text-align: center;
-  min-width: 200px;
-  white-space: nowrap;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  position: relative;
+  height: 125px;
+  width: 220px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url(../../../assets/img/EA11096C-990F-439E-9555-87EFA801831F.jpeg);
+  background-size: cover;
 }
 
-.cupon:after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  right: -4px;
-  width: 0;
-  height: 0;
-  border-left: 20px solid white;
-  border-right: 10px solid transparent; /* Modificación: Ajustamos el valor de la mitad de 20px */
-  border-bottom: 20px solid white;
+.cupon-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
+
+
 
 .cupon-name {
   font-weight: bold;
+
 }
 
 .cupon-discount {

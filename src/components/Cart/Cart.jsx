@@ -17,12 +17,10 @@ const Cart = () => {
       });
   }, []);
 
-  const handleClearCart = () => {
-    setSelectedPizzas([]);
-  };
 
   return (
     <div className="cart-container">
+      <h1>Carrito</h1>
       {selectedPizzas.map((pizza) => (
         <div key={pizza.id} className="pizza-card">
           <img src={pizza.img} alt={pizza.name} className="pizza-image" />
@@ -33,11 +31,7 @@ const Cart = () => {
           </div>
         </div>
       ))}
-      {selectedPizzas.length > 0 && (
-        <button onClick={handleClearCart} className="clear-button">
-          Limpiar Carrito
-        </button>
-      )}
+
     </div>
   );
 };

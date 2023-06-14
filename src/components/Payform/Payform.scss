@@ -1,6 +1,9 @@
+
 .payform-container {
     padding: 20px;
     padding-bottom: 70px;
+    background-color: rgb(255, 233, 233);
+
   }
   
   .form-group {
@@ -21,7 +24,9 @@
   }
   
   button {
-    background-color: #4caf50;
+    background-color: var(--color-secondary);
+    justify-content: center;
+    align-items: center;
     color: #fff;
     padding: 10px 20px;
     border: none;

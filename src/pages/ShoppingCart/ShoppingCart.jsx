@@ -8,7 +8,6 @@ const ShoppingCart = () => {
   return (
     <div>
       <Layout />
-      <h1>...Carrito</h1>
       <Cart />
       <Payform/>
       <div>
