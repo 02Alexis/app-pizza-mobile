@@ -34,8 +34,3 @@ password: zoro
 ## Tech Stack
 
 **Client:** HTML, CSS, JavaScript, React.JS, SASS, Git Flow, Vercel
-
-
-## Authors
-
-- [@AndresParra11](https://github.com/AndresParra11)
